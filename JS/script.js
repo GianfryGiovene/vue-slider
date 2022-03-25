@@ -52,7 +52,7 @@ const app = new Vue({
     },
     methods:{
 
-        previous(){
+        decrease(){
             if(this.imgPointer === 0){
 
                 this.imgPointer = this.slides.length -1;
@@ -74,9 +74,32 @@ const app = new Vue({
                 this.imgPointer++;
 
             }
+        },
+
+        switchImageTimer(){
+            const timer  = setInterval(()=>{
+                this.imgPointer++;
+                console.log(this.imgPointer);
+                    
+            },3000)
+        },
+
+        addActiveClass(item){
+            console.log(item.title);
+            const index = this.slides.findIndex(
+                (slide)=> slide.title === item.title
+            )     
+            console.log(index);
+            if(index===this.imgPointer){
+
+                return 'thumb active';
+
+            }else{
+
+                return 'thumb'
+
+            }
         }
     }
-
         
-
 })
