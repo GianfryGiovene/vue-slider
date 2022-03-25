@@ -46,7 +46,7 @@ const app = new Vue({
 
     data:{
         slides,
-        imgPointer: 1
+        imgPointer: 0
 
         
     },
