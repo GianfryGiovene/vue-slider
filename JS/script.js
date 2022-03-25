@@ -79,17 +79,21 @@ const app = new Vue({
         switchImageTimer(){
             const timer  = setInterval(()=>{
                 this.imgPointer++;
-                console.log(this.imgPointer);
+               
+                if(this.imgPointer==slides.length){
+                    clearInterval(timer);
+                    this.imgPointer = 0;
+                }
                     
             },3000)
         },
 
         addActiveClass(item){
-            console.log(item.title);
+
             const index = this.slides.findIndex(
                 (slide)=> slide.title === item.title
             )     
-            console.log(index);
+            
             if(index===this.imgPointer){
 
                 return 'thumb active';
@@ -97,9 +101,7 @@ const app = new Vue({
             }else{
 
                 return 'thumb'
-
             }
         }
-    }
-        
+    }       
 })
