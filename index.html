@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Carosello News</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="CSS/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <title>Slider</title>
+
 </head>
 
 <body>
@@ -16,10 +16,11 @@
     <div id="app">
 
         <div class="container">
-            <div class="slider-wrapper" tabindex="0">
+            <div @keyup.down="imageDown()" @keyup.up="imageUp()" class="slider-wrapper" tabindex="0">
 
-                <div @mouseover="switchImageTimer()" class="item">
-                    <img :src="slides[imgPointer].image" :alt="slides[imgPointer].title" />
+                <div class="item">
+                    <img @mouseover="switchImageTimer()" :src="slides[imgPointer].image"
+                        :alt="slides[imgPointer].title" />
                     <div class="text">
                         <h3>{{slides[imgPointer].title}}</h3>
                         <p>
@@ -42,7 +43,7 @@
 
     </div>
 
-    <script src="js/script.js"></script>
+    <script src="JS/script.js"></script>
 </body>
 
 </html>

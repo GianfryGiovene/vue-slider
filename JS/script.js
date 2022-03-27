@@ -47,8 +47,7 @@ const app = new Vue({
     data:{
         slides,
         imgPointer: 0
-
-        
+  
     },
     methods:{
 
@@ -100,7 +99,22 @@ const app = new Vue({
 
             }else{
 
-                return 'thumb'
+                return 'thumb';
+            }
+        },
+
+        imageUp(){
+            
+            if(this.imgPointer===0){
+                this.imgPointer = this.slides.length;
+            }
+            this.imgPointer--;
+        },
+
+        imageDown(){
+            this.imgPointer++;
+            if(this.imgPointer===this.slides.length){
+                this.imgPointer = 0;
             }
         }
     }       
