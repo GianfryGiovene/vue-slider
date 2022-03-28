@@ -46,7 +46,8 @@ const app = new Vue({
 
     data:{
         slides,
-        imgPointer: 0
+        imgPointer: 0,
+        timerCleaner: undefined
   
     },
     methods:{
@@ -75,16 +76,12 @@ const app = new Vue({
             }
         },
 
-        switchImageTimer(){
-            const timer  = setInterval(()=>{
-                this.imgPointer++;
-               
-                if(this.imgPointer==slides.length){
-                    clearInterval(timer);
-                    this.imgPointer = 0;
-                }
-                    
-            },3000)
+        startTimer(){
+            this.timerCleaner = setInterval(this.increase, 3000);
+        },
+
+        stopTimer(){
+            clearInterval(this.timerCleaner);
         },
 
         addActiveClass(item){
@@ -116,6 +113,10 @@ const app = new Vue({
             if(this.imgPointer===this.slides.length){
                 this.imgPointer = 0;
             }
+        },
+        selectSlide(item){
+            this.imgPointer = item;
         }
+        
     }       
 })
